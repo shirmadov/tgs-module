@@ -4,4 +4,6 @@
 
         composer require nwidart/laravel-modules
 
-        composer require shirmadov/tgs-module
+        composer require joshbrw/laravel-module-installer
+
+        composer require tgs/tgs-module
