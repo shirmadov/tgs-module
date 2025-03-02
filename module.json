@@ -1,0 +1,11 @@
+{
+    "name": "Tgs",
+    "alias": "tgs",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Tgs\\Providers\\TgsServiceProvider"
+    ],
+    "files": []
+}
