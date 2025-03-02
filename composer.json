@@ -1,10 +1,10 @@
 {
-    "name": "nwidart/tgs",
-    "description": "",
+    "name": "tgs/tgs",
+    "description": "Text Generator Service module",
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "Sapa Shirmadov",
+            "email": "sapashirmadov2501@gmail.com"
         }
     ],
     "extra": {
