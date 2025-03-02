@@ -4,6 +4,7 @@ namespace Modules\Tgs\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Tgs\Http\Requests\ArticleDeleteRequest;
 use Modules\Tgs\Models\TgsArticle;
 use Modules\Tgs\Http\Requests\ArticleUpdateRequest;
 
@@ -38,7 +39,7 @@ class ArticleController extends Controller
         return redirect()->route('tgs.article.index');
     }
 
-    public function deleteArticles(TgsArticle $article)
+    public function deleteArticles(ArticleDeleteRequest $article)
     {
         foreach ($article->input('articles') as $article){
             TgsArticle::where('id', $article)->delete();

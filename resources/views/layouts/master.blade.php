@@ -20,7 +20,6 @@
     {{-- Vite CSS --}}
     {{-- {{ module_vite('build-tgs', 'resources/assets/sass/app.scss', storage_path('vite.hot')) }} --}}
 
-    {{ module_vite('build-article', 'resources/assets/js/index.js') }}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
