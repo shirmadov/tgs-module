@@ -11,10 +11,7 @@
     "extra": {
         "module-dir": "Modules",
         "laravel": {
-            "providers": [],
-            "aliases": {
-
-            }
+            "dont-discover": []
         },
         "merge-plugin": {
             "include": [
