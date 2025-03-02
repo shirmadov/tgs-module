@@ -1,6 +1,7 @@
 {
     "name": "tgs/tgs-module",
     "description": "Text Generator Service module",
+    "type": "laravel-module",
     "authors": [
         {
             "name": "Sapa Shirmadov",
