@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Modules\Article\Models\TextServiceArticle;
 use Modules\Tgs\Http\Requests\ArticleStoreRequest;
 use Modules\Tgs\Models\TgsArticle;
+use Illuminate\Http\File;
 
 class TgsArticleController extends Controller
 {
@@ -41,10 +41,20 @@ class TgsArticleController extends Controller
             'short_description' => $request->input('short_desc'),
             'source_title' => $request->input('source_title'),
             'source_url' => $request->input('source_url'),
+            'extra_fields' => $request->input('extra_fields'),
             'published' => $request->input('scheduled_at'),
         ];
 
         TgsArticle::create($data);
+
+        if(!is_null($request->input('setting_fields'))){
+            $modulePath = base_path('modules/Tgs/resources/assets/field/');
+            if (!file_exists($modulePath)) {
+                mkdir($modulePath, 0777, true);
+            }
+            $jsonData = json_encode($request->input('setting_fields'), JSON_PRETTY_PRINT);
+            file_put_contents($modulePath . "field_settings.json", $jsonData);
+        }
 
         return response()->json([
             'success' => true,

@@ -18,12 +18,22 @@ class ArticleController extends Controller
 
     public function show(TgsArticle $article)
     {
-        return view('tgs::tgs.show',compact('article'));
+        $modulePath = base_path('modules/Tgs/resources/assets/field/field_settings.json');
+        $fields = [];
+        if (file_exists($modulePath)) {
+            $fields = json_decode(file_get_contents($modulePath), true);
+        }
+        return view('tgs::tgs.show',compact('article','fields'));
     }
 
     public function edit(TgsArticle $article)
     {
-        return view('tgs::tgs.edit', compact('article'));
+        $modulePath = base_path('modules/Tgs/resources/assets/field/field_settings.json');
+        $fields = [];
+        if (file_exists($modulePath)) {
+            $fields = json_decode(file_get_contents($modulePath), true);
+        }
+        return view('tgs::tgs.edit', compact('article','fields'));
     }
 
     public function update(ArticleUpdateRequest $request, $id)
@@ -49,6 +59,7 @@ class ArticleController extends Controller
 
     public function accept(Request $request,TgsArticle $article)
     {
+//        [{"role": "text", "field_name": "first_name", "field_label": "Имя", "value": "Sapa"}, {"role": "textarea", "field_name": "desc", "field_label": "Описание","value": "My name is Shirmadov"}]
         $article->update(['status'=>$request->input('status','rejected')]);
         return redirect()->route('tgs.article.index');
     }

@@ -94,6 +94,41 @@
                         <div class="form-text text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    @foreach($fields as $field)
+                        @if(array_key_exists($field['field_name'], $article['extra_fields']))
+                            @if($field['type']=='text_input')
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label>{{$field['field_label']}}</label>
+                                        <input type="text" name="extra_fields[{{$field['field_name']}}]" required="{{$field['required']}}" value="{{ $article['extra_fields'][$field['field_name']] }}" class="form-control" >
+                                        @error('source_url')
+                                        <div class="form-text text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            @elseif($field['type']=='textarea')
+                                <div class="mb-3">
+                                    <label>{{$field['field_label']}}</label>
+                                    <textarea name="extra_fields[{{$field['field_name']}}]" required="{{$field['required']}}" class="form-control ckedit">{!! $article['extra_fields'][$field['field_name']] !!}</textarea>
+                                    @error('content')
+                                    <div class="form-text text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            @elseif($field['type']=='checkbox')
+                                <input type="hidden" name="extra_fields[{{ $field['field_name'] }}]" value="0">
+                                <div class="col-6">
+                                    <div class="mb-3 form-check">
+                                        <label class="form-check-label" for="flexCheckChecked">{{ $field['field_label'] }}</label>
+                                        <input class="form-check-input" type="checkbox" value="1" name="extra_fields[{{$field['field_name']}}]" id="flexCheckChecked" @if($article['extra_fields'][$field['field_name']]) checked @endif>
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
+
+                    @endforeach
+
+
                     <button class="btn btn-outline-primary">Сохранить</button>
                 </div>
 

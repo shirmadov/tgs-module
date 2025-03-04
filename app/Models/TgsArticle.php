@@ -28,10 +28,12 @@ class TgsArticle extends Model
         "source_title",
         "source_url",
         'published',
+        'extra_fields',
     ];
 
     protected $casts = [
         'type' => ArticleTypeEnum::class,
+        'extra_fields' => 'array',
     ];
 
     public function getTypeLabelAttribute(): string

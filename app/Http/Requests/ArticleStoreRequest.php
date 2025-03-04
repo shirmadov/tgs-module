@@ -24,6 +24,8 @@ class ArticleStoreRequest extends FormRequest
             "response"=>["required","string"],
             "selected_image"=>["required","string"],
             "status"=>["required","string"],
+            "extra_fields"=>["array"],
+            "setting_fields"=>['nullable',"array"],
             "scheduled_at"=>["required","string"],
         ];
     }
