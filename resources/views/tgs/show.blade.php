@@ -18,7 +18,6 @@
                     <p><strong>{{$field['field_label']}}</strong></p>
                     <p> {{$article['extra_fields'][$field['field_name']]}}</p>
                 @endif
-
             @endforeach
         </div>
     </div>
