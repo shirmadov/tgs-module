@@ -1,26 +1,17 @@
 [
     {
-        "type": "text_input",
-        "required": true,
-        "field_name": "field_67c6c93d29e3d",
+        "role": "text_input",
+        "field_name": "first_name",
         "field_label": "\u0418\u043c\u044f"
     },
     {
-        "type": "text_input",
-        "required": true,
-        "field_name": "field_67c6ca2805b61",
+        "role": "text_input",
+        "field_name": "last_name",
         "field_label": "\u0424\u0430\u043c\u0438\u043b\u0438\u044f"
     },
     {
-        "type": "textarea",
-        "required": false,
-        "field_name": "field_67c6ca321d06c",
+        "role": "textarea",
+        "field_name": "short_desc",
         "field_label": "\u041e \u0441\u0435\u0431\u0435"
-    },
-    {
-        "type": "checkbox",
-        "required": false,
-        "field_name": "field_67c6ca5995854",
-        "field_label": "\u0416\u0435\u043d\u0430\u0442\u044c"
     }
 ]

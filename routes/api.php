@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Tgs\Http\Controllers\TgsController;
 use Modules\Tgs\Http\Controllers\Api\TgsArticleController;
+use Modules\Tgs\Http\Middleware\TgsCanStoreMiddleware;
 
 /*
  *--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ use Modules\Tgs\Http\Controllers\Api\TgsArticleController;
 //    Route::apiResource('tgs', TgsController::class)->names('tgs');
 //});
 
-Route::post('article',[TgsArticleController::class,'store']);
+Route::post('article',[TgsArticleController::class,'store'])->middleware(TgsCanStoreMiddleware::class);

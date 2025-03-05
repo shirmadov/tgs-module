@@ -67,7 +67,6 @@ class ArticleController extends Controller
 
     public function accept(Request $request,TgsArticle $article)
     {
-//        [{"role": "text", "field_name": "first_name", "field_label": "Имя", "value": "Sapa"}, {"role": "textarea", "field_name": "desc", "field_label": "Описание","value": "My name is Shirmadov"}]
         $article->update(['status'=>$request->input('status','rejected')]);
         return redirect()->route('tgs.article.index');
     }
