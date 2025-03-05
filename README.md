@@ -41,6 +41,5 @@ TGS_API_KEY=xxxxxxxx
 
 Для получения дополнительных инструкций обратитесь к документации модуля или Laravel.
 
-laravel module:
-https://laravelmodules.com/docs/v11/introduction
+laravel module: https://laravelmodules.com/docs/v11/introduction
 
