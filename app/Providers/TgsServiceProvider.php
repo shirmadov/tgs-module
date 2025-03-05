@@ -27,6 +27,7 @@ class TgsServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        $this->registerFilesystem();
     }
 
     /**
@@ -131,5 +132,21 @@ class TgsServiceProvider extends ServiceProvider
         }
 
         return $paths;
+    }
+
+    protected function registerFilesystem(): void
+    {
+        $this->app['config']->set('filesystems.disks.module_storage', [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ]);
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                module_path('Tgs') . '/public' => public_path('storage/modules/tgs'),
+            ], 'tgs-storage');
+        }
     }
 }

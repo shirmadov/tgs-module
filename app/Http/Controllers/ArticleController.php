@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Modules\Tgs\Http\Requests\ArticleDeleteRequest;
 use Modules\Tgs\Models\TgsArticle;
 use Modules\Tgs\Http\Requests\ArticleUpdateRequest;
-
+use Illuminate\Support\Facades\Storage;
 class ArticleController extends Controller
 {
     public function index()
@@ -38,8 +38,16 @@ class ArticleController extends Controller
 
     public function update(ArticleUpdateRequest $request, $id)
     {
-        $article = TgsArticle::find($id);
-        $article->update($request->validated());
+        $data = $request->validated();
+        if (!empty($data["image"])) {
+            $data["image"] = basename(Storage::disk('module_storage')->putFileAs(
+                'publication',
+                $data["image"],
+                date("YmdH") . uniqid() . "." . $data["image"]->extension()
+            ));
+        }
+        TgsArticle::findOrFail($id)->update($data);
+
         return redirect()->route('tgs.article.index');
     }
 

@@ -8,15 +8,19 @@
             <h4>{{$article->title}}</h4>
             <p>{{$article->short_description}}</p>
             <img height="360" width="640" src="{{asset("/storage/publication/".$article->image)}}">
+{{--            <img height="360" width="640" src="{{ asset('app/modules/Tgs/public/publication/' . $article->image) }}">--}}
+
             <p>{{$article->image_title}}</p>
             <p>{!! $article->content !!}</p>
             @foreach($fields as $field)
-                @if($field['type']=='checkbox')
-                    <p><strong>{{$field['field_label']}}</strong></p>
-                    <p>@if($article['extra_fields'][$field['field_name']] == 1) Да @else Нет @endif</p>
-                @elseif($field['type']=='text_input')
-                    <p><strong>{{$field['field_label']}}</strong></p>
-                    <p> {{$article['extra_fields'][$field['field_name']]}}</p>
+                @if(array_key_exists($field['field_name'], $article['extra_fields']))
+                    @if($field['type']=='checkbox')
+                        <p><strong>{{$field['field_label']}}</strong></p>
+                        <p>@if($article['extra_fields'][$field['field_name']] == 1) Да @else Нет @endif</p>
+                    @elseif($field['type']=='text_input')
+                        <p><strong>{{$field['field_label']}}</strong></p>
+                        <p> {{$article['extra_fields'][$field['field_name']]}}</p>
+                    @endif
                 @endif
             @endforeach
         </div>

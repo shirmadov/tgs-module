@@ -22,7 +22,7 @@ class TgsArticleController extends Controller
             $image = Http::get($request->input('selected_image'))->body();
             $imageName = 'service_'.date("YmdH").uniqid().'.jpg';
             $imagePath = '/publication/'.$imageName;
-            Storage::disk('public')->put($imagePath, $image);
+            Storage::disk('module_storage')->put($imagePath, $image);
         }
 
         $title = $request->input('title');
